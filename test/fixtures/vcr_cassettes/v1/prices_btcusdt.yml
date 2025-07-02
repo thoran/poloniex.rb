@@ -1,0 +1,110 @@
+---
+http_interactions:
+- request:
+    method: get
+    uri: https://api.poloniex.com/markets/BTCUSDT/price
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+      User-Agent:
+      - Ruby
+  response:
+    status:
+      code: 400
+      message: Bad Request
+    headers:
+      Date:
+      - Wed, 25 Jun 2025 08:50:19 GMT
+      Content-Type:
+      - application/json
+      Content-Length:
+      - '53'
+      Connection:
+      - keep-alive
+      Web-Filter:
+      - skip-authentication
+      Cf-Cache-Status:
+      - DYNAMIC
+      Strict-Transport-Security:
+      - max-age=15552000; includeSubDomains
+      X-Content-Type-Options:
+      - nosniff
+      Server:
+      - cloudflare
+      Cf-Ray:
+      - 95533774cdf2ee8d-MXP
+    body:
+      encoding: UTF-8
+      string: |-
+        {
+          "code" : 24101,
+          "message" : "Invalid symbol!"
+        }
+  recorded_at: Wed, 25 Jun 2025 08:50:19 GMT
+- request:
+    method: get
+    uri: https://api.poloniex.com/markets/BTC_USDT/price
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+      User-Agent:
+      - Ruby
+      Content-Type:
+      - application/json
+      Key:
+      - "<API_KEY>"
+      Signaturemethod:
+      - HmacSHA256
+      Signature:
+      - 9f8fbbac7b5d1dfff9b582c73e1f8c0596266247409e5f251354d005a07a2d35
+      Signatureversion:
+      - '2'
+      Timestamp:
+      - '1751389496000'
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Date:
+      - Tue, 01 Jul 2025 17:04:58 GMT
+      Content-Type:
+      - application/json
+      Transfer-Encoding:
+      - chunked
+      Connection:
+      - keep-alive
+      Web-Filter:
+      - skip-authentication
+      Cf-Cache-Status:
+      - DYNAMIC
+      Strict-Transport-Security:
+      - max-age=15552000; includeSubDomains
+      X-Content-Type-Options:
+      - nosniff
+      Server:
+      - cloudflare
+      Cf-Ray:
+      - 95877c4b992f926b-FRA
+    body:
+      encoding: ASCII-8BIT
+      string: |-
+        {
+          "symbol" : "BTC_USDT",
+          "price" : "105941.02",
+          "time" : 1751389498122,
+          "dailyChange" : "-0.0157",
+          "ts" : 1751389498138
+        }
+  recorded_at: Tue, 01 Jul 2025 17:04:58 GMT
+recorded_with: VCR 6.3.1

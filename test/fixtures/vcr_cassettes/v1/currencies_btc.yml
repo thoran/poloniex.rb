@@ -1,0 +1,64 @@
+---
+http_interactions:
+- request:
+    method: get
+    uri: https://api.poloniex.com/currencies/BTC
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+      User-Agent:
+      - Ruby
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Date:
+      - Wed, 25 Jun 2025 08:50:06 GMT
+      Content-Type:
+      - application/json
+      Transfer-Encoding:
+      - chunked
+      Connection:
+      - keep-alive
+      Web-Filter:
+      - skip-authentication
+      Cf-Cache-Status:
+      - DYNAMIC
+      Strict-Transport-Security:
+      - max-age=15552000; includeSubDomains
+      X-Content-Type-Options:
+      - nosniff
+      Server:
+      - cloudflare
+      Cf-Ray:
+      - 955337229802f615-MXP
+    body:
+      encoding: ASCII-8BIT
+      string: |-
+        {
+          "BTC" : {
+            "id" : 28,
+            "name" : "Bitcoin",
+            "description" : "BTC Clone",
+            "type" : "address",
+            "withdrawalFee" : "0.00100000",
+            "minConf" : 2,
+            "depositAddress" : null,
+            "blockchain" : "BTC",
+            "delisted" : false,
+            "tradingState" : "NORMAL",
+            "walletState" : "ENABLED",
+            "walletDepositState" : "ENABLED",
+            "walletWithdrawalState" : "ENABLED",
+            "supportCollateral" : true,
+            "supportBorrow" : true
+          }
+        }
+  recorded_at: Wed, 25 Jun 2025 08:50:05 GMT
+recorded_with: VCR 6.3.1

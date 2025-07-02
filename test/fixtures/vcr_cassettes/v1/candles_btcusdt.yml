@@ -1,0 +1,64 @@
+---
+http_interactions:
+- request:
+    method: get
+    uri: https://api.poloniex.com/markets/BTC_USDT/orderBook
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+      User-Agent:
+      - Ruby
+      Content-Type:
+      - application/json
+      Key:
+      - "<API_KEY>"
+      Signaturemethod:
+      - HmacSHA256
+      Signature:
+      - 01162edd52a104c2cda64624a7c45707bdf033ae64564442e15f5df36e564b1d
+      Signatureversion:
+      - '2'
+      Timestamp:
+      - '1751390405000'
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Date:
+      - Tue, 01 Jul 2025 17:20:06 GMT
+      Content-Type:
+      - application/json
+      Transfer-Encoding:
+      - chunked
+      Connection:
+      - keep-alive
+      Web-Filter:
+      - unauthenticated
+      Cf-Cache-Status:
+      - DYNAMIC
+      Strict-Transport-Security:
+      - max-age=15552000; includeSubDomains
+      X-Content-Type-Options:
+      - nosniff
+      Server:
+      - cloudflare
+      Cf-Ray:
+      - 958792785817d399-FRA
+    body:
+      encoding: ASCII-8BIT
+      string: |-
+        {
+          "time" : 1751390406003,
+          "scale" : "0.01",
+          "asks" : [ "106213.92", "0.059783", "106213.93", "0.00175", "106214.01", "0.00018", "106214.05", "0.000057", "106218.03", "0.000141", "106233.29", "0.000540", "106239.92", "0.000026", "106242.00", "0.041851", "106244.67", "0.000013", "106247.74", "0.000021" ],
+          "bids" : [ "106172.84", "0.001303", "106172.83", "0.00018", "106131.16", "0.161", "106131.03", "0.030151", "106111.89", "0.000141", "106104.50", "0.614467", "106104.49", "0.572885", "106104.48", "1.092828", "106104.44", "0.546741", "106077.18", "0.089290" ],
+          "ts" : 1751390406468
+        }
+  recorded_at: Tue, 01 Jul 2025 17:20:06 GMT
+recorded_with: VCR 6.3.1

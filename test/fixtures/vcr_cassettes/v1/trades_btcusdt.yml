@@ -1,0 +1,110 @@
+---
+http_interactions:
+- request:
+    method: get
+    uri: https://api.poloniex.com/markets/BTCUSDT/trades
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+      User-Agent:
+      - Ruby
+  response:
+    status:
+      code: 400
+      message: Bad Request
+    headers:
+      Date:
+      - Wed, 25 Jun 2025 08:50:24 GMT
+      Content-Type:
+      - application/json
+      Content-Length:
+      - '53'
+      Connection:
+      - keep-alive
+      Web-Filter:
+      - skip-authentication
+      Cf-Cache-Status:
+      - DYNAMIC
+      Strict-Transport-Security:
+      - max-age=15552000; includeSubDomains
+      X-Content-Type-Options:
+      - nosniff
+      Server:
+      - cloudflare
+      Cf-Ray:
+      - 95533798ae42ee97-MXP
+    body:
+      encoding: UTF-8
+      string: |-
+        {
+          "code" : 24101,
+          "message" : "Invalid symbol!"
+        }
+  recorded_at: Wed, 25 Jun 2025 08:50:24 GMT
+- request:
+    method: get
+    uri: https://api.poloniex.com/markets/BTC_USDT/orderBook
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+      User-Agent:
+      - Ruby
+      Content-Type:
+      - application/json
+      Key:
+      - "<API_KEY>"
+      Signaturemethod:
+      - HmacSHA256
+      Signature:
+      - 70f4cd45362e3804bd13e086ae8d8be62d8d246ff8cab8a5ab80de53587c5aef
+      Signatureversion:
+      - '2'
+      Timestamp:
+      - '1751389950000'
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Date:
+      - Tue, 01 Jul 2025 17:12:31 GMT
+      Content-Type:
+      - application/json
+      Transfer-Encoding:
+      - chunked
+      Connection:
+      - keep-alive
+      Web-Filter:
+      - unauthenticated
+      Cf-Cache-Status:
+      - DYNAMIC
+      Strict-Transport-Security:
+      - max-age=15552000; includeSubDomains
+      X-Content-Type-Options:
+      - nosniff
+      Server:
+      - cloudflare
+      Cf-Ray:
+      - 9587875aeddb1936-AMS
+    body:
+      encoding: ASCII-8BIT
+      string: |-
+        {
+          "time" : 1751389950617,
+          "scale" : "0.01",
+          "asks" : [ "106191.04", "0.00011", "106191.07", "0.00018", "106214.05", "0.000057", "106216.00", "0.041851", "106218.03", "0.000141", "106230.50", "0.161", "106230.51", "0.05648", "106233.29", "0.000540", "106239.92", "0.000026", "106244.67", "0.000013" ],
+          "bids" : [ "106123.73", "0.161", "106123.71", "0.161", "106123.66", "0.000408", "106123.54", "0.000111", "106111.89", "0.000141", "106109.77", "1.032099", "106109.75", "0.424108", "106109.74", "0.345415", "106098.26", "0.49902", "106098.23", "0.526437" ],
+          "ts" : 1751389951045
+        }
+  recorded_at: Tue, 01 Jul 2025 17:12:31 GMT
+recorded_with: VCR 6.3.1

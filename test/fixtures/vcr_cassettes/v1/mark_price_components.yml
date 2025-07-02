@@ -1,0 +1,111 @@
+---
+http_interactions:
+- request:
+    method: get
+    uri: https://api.poloniex.com/markets/BTC_USDT/markPriceComponents
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+      User-Agent:
+      - Ruby
+      Content-Type:
+      - application/json
+      Key:
+      - "<API_KEY>"
+      Signaturemethod:
+      - HmacSHA256
+      Signature:
+      - f6f268d4f7f2222b69a8f5b8a31e24a33619887949e0903a415a4561f8dc5d9b
+      Signatureversion:
+      - '2'
+      Timestamp:
+      - '1751391150000'
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Date:
+      - Tue, 01 Jul 2025 17:32:31 GMT
+      Content-Type:
+      - application/json
+      Transfer-Encoding:
+      - chunked
+      Connection:
+      - keep-alive
+      Web-Filter:
+      - skip-authentication
+      Cf-Cache-Status:
+      - DYNAMIC
+      Strict-Transport-Security:
+      - max-age=15552000; includeSubDomains
+      X-Content-Type-Options:
+      - nosniff
+      Server:
+      - cloudflare
+      Cf-Ray:
+      - 9587a4a9be87ab40-AMS
+    body:
+      encoding: ASCII-8BIT
+      string: |-
+        {
+          "markPrice" : "106189.12",
+          "symbol" : "BTC_USDT",
+          "ts" : 1751391151774,
+          "components" : [ {
+            "symbol" : "BTC_USDT",
+            "symbolPrice" : "106189.59",
+            "weight" : "0.52",
+            "convertPrice" : "106189.59",
+            "exchange" : "BINANCE"
+          }, {
+            "symbol" : "BTC_USDT",
+            "symbolPrice" : "106189",
+            "weight" : "0.12",
+            "convertPrice" : "106189",
+            "exchange" : "OKX"
+          }, {
+            "symbol" : "BTC_USDT",
+            "symbolPrice" : "106195",
+            "weight" : "0.02",
+            "convertPrice" : "106195",
+            "exchange" : "HUOBI"
+          }, {
+            "symbol" : "BTC_USDT",
+            "symbolPrice" : "106184.13",
+            "weight" : "0.02",
+            "convertPrice" : "106184.13",
+            "exchange" : "POLONIEX"
+          }, {
+            "symbol" : "BTC_USDT",
+            "symbolPrice" : "106189.2",
+            "weight" : "0.01",
+            "convertPrice" : "106189.2",
+            "exchange" : "GATEIO"
+          }, {
+            "symbol" : "BTC_USDT",
+            "symbolPrice" : "106186.94",
+            "weight" : "0.02",
+            "convertPrice" : "106186.94",
+            "exchange" : "BINANCEUS"
+          }, {
+            "symbol" : "BTC_USDT",
+            "symbolPrice" : "106184.7",
+            "weight" : "0.04",
+            "convertPrice" : "106184.7",
+            "exchange" : "KUCOIN"
+          }, {
+            "symbol" : "BTC_USDT",
+            "symbolPrice" : "106187.91",
+            "weight" : "0.02",
+            "convertPrice" : "106187.91",
+            "exchange" : "DIGIFINEX"
+          } ]
+        }
+  recorded_at: Tue, 01 Jul 2025 17:32:32 GMT
+recorded_with: VCR 6.3.1

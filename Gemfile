@@ -1,12 +1,11 @@
-source "https://rubygems.org"
+source 'https://rubygems.org'
 
-gem "http.rb"
+gem 'http.rb'
 
 group :development, :test do
-  gem "rake"
-  gem "minitest"
-  gem "minitest-spec-context"
-  gem "vcr"
-  gem "webmock"
+  gem 'rake'
+  gem 'minitest'
+  gem 'minitest-spec-context'
+  gem 'vcr'
+  gem 'webmock'
 end
-

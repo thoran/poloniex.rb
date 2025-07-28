@@ -1,49 +1,14 @@
-require_relative '../../helper'
+require_relative '../../../helper'
 
-describe Poloniex::V1::Client do
+describe "Poloniex::V1::Client Public Endpoints" do
+  let(:api_key){ENV.fetch('POLONIEX_API_KEY', '<API_KEY>')}
+  let(:api_secret){ENV.fetch('POLONIEX_API_SECRET', '<API_SECRET>')}
+
   subject do
-    Poloniex::V1::Client.new
-  end
-
-  before do
-    Poloniex.configure do |config|
-      config.api_key = "test_api_key"
-      config.api_secret = "test_api_secret"
-      config.debug = false
-    end
-    WebMock.disable_net_connect!(allow_localhost: true)
-  end
-
-  describe ".configuration" do
-    context "global configuration" do
-      it "uses global configuration by default" do
-        client = Poloniex::V1::Client.new
-        _(client).must_be_kind_of(Poloniex::V1::Client)
-      end
-    end
-
-    context "configuration object " do
-      it "accepts a configuration object as an argument" do
-        configuration = Poloniex::Configuration.new(
-          api_key: "test_api_key",
-          api_secret: "test_api_secret",
-          debug: false
-        )
-        client = Poloniex::V1::Client.new(configuration: configuration)
-        _(client).must_be_kind_of(Poloniex::V1::Client)
-      end
-    end
-
-    context "" do
-      it "allows overriding configuration" do
-        client = Poloniex::V1::Client.new(
-          api_key: "custom_key",
-          api_secret: "custom_secret",
-          debug: true
-        )
-        _(client).must_be_kind_of(Poloniex::V1::Client)
-      end
-    end
+    Poloniex::V1::Client.new(
+      api_key: api_key,
+      api_secret: api_secret
+    )
   end
 
   describe "#candles" do
@@ -57,14 +22,14 @@ describe Poloniex::V1::Client do
 
   describe "#currencies" do
     it "fetches all currencies" do
-      VCR.use_cassette("v1/currencies") do
+      VCR.use_cassette('v1/currencies') do
         response = subject.currencies
         _(response).must_be_kind_of(Array)
       end
     end
 
     it "fetches a specific currency" do
-      VCR.use_cassette("v1/currencies_btc") do
+      VCR.use_cassette('v1/currencies_btc') do
         response = subject.currencies('BTC')
         _(response).must_be_kind_of(Hash)
         _(response.count).must_equal(1)
@@ -74,17 +39,17 @@ describe Poloniex::V1::Client do
     end
   end
 
-  describe "#mark_prices" do
+  describe "#mark_price" do
     it "fetches all markets" do
-      VCR.use_cassette('v1/mark_prices') do
-        response = subject.mark_prices
+      VCR.use_cassette('v1/mark_price') do
+        response = subject.mark_price
         _(response).must_be_kind_of(Array)
       end
     end
 
     it "fetches a specific market" do
-      VCR.use_cassette('v1/mark_prices_btcusdt') do
-        response = subject.mark_prices('BTC_USDT')
+      VCR.use_cassette('v1/mark_price_btcusdt') do
+        response = subject.mark_price('BTC_USDT')
         _(response).must_be_kind_of(Hash)
         _(response.count).must_equal(3)
         _(response['symbol']).must_equal('BTC_USDT')
@@ -128,17 +93,17 @@ describe Poloniex::V1::Client do
     end
   end
 
-  describe "#prices" do
+  describe "#price" do
     it "fetches prices for all symbols" do
-      VCR.use_cassette('v1/prices') do
-        response = subject.prices
+      VCR.use_cassette('v1/price') do
+        response = subject.price
         _(response).must_be_kind_of(Array)
       end
     end
 
     it "fetches price for a specific symbol" do
-      VCR.use_cassette('v1/prices_btcusdt') do
-        response = subject.prices('BTC_USDT')
+      VCR.use_cassette('v1/price_btcusdt') do
+        response = subject.price('BTC_USDT')
         _(response).must_be_kind_of(Hash)
       end
     end
@@ -162,7 +127,7 @@ describe Poloniex::V1::Client do
 
   describe "#timestamp" do
     it "fetches server timestamp" do
-      VCR.use_cassette("v1/timestamp") do
+      VCR.use_cassette('v1/timestamp') do
         response = subject.timestamp
         _(response).must_be_kind_of(Hash)
         _(response["serverTime"]).must_be_kind_of(Integer)

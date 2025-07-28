@@ -2,7 +2,7 @@
 http_interactions:
 - request:
     method: get
-    uri: https://api.poloniex.com/markets/BTCUSDT/markPriceComponents
+    uri: https://api.poloniex.com/accounts?signTimestamp=1753098189730
     body:
       encoding: US-ASCII
       string: ''
@@ -13,21 +13,29 @@ http_interactions:
       - "*/*"
       User-Agent:
       - Ruby
-  response:
-    status:
-      code: 500
-      message: Internal Server Error
-    headers:
-      Date:
-      - Wed, 25 Jun 2025 08:50:21 GMT
       Content-Type:
       - application/json
-      Content-Length:
-      - '48'
+      Key:
+      - "<API_KEY>"
+      Signature:
+      - ROCwSTyfXyebW1pa249ytfq1tgugBeu8o11neF2d3HU=
+      Signtimestamp:
+      - '1753098189730'
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Date:
+      - Mon, 21 Jul 2025 11:43:09 GMT
+      Content-Type:
+      - application/json
+      Transfer-Encoding:
+      - chunked
       Connection:
       - keep-alive
       Web-Filter:
-      - skip-authentication
+      - authenticated
       Cf-Cache-Status:
       - DYNAMIC
       Strict-Transport-Security:
@@ -37,13 +45,14 @@ http_interactions:
       Server:
       - cloudflare
       Cf-Ray:
-      - 955337831bee3a89-MXP
+      - 962a7066886da7ef-SYD
     body:
-      encoding: UTF-8
+      encoding: ASCII-8BIT
       string: |-
-        {
-          "code" : 500,
-          "message" : "System error"
-        }
-  recorded_at: Wed, 25 Jun 2025 08:50:21 GMT
+        [ {
+          "accountId" : "76103222774956032",
+          "accountType" : "SPOT",
+          "accountState" : "NORMAL"
+        } ]
+  recorded_at: Mon, 21 Jul 2025 11:43:09 GMT
 recorded_with: VCR 6.3.1

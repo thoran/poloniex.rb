@@ -2,7 +2,7 @@
 http_interactions:
 - request:
     method: get
-    uri: https://api.poloniex.com/markets/BTC_USDT/markPrice?signTimestamp=1752851433000
+    uri: https://api.poloniex.com/margin/maxSize?signTimestamp=1753005827100&symbol=BTC_USDT
     body:
       encoding: US-ASCII
       string: ''
@@ -17,21 +17,17 @@ http_interactions:
       - application/json
       Key:
       - "<API_KEY>"
-      Signaturemethod:
-      - HmacSHA256
       Signature:
-      - ub/Euvgo7a4GxklxY3RrekwQyo/Dk51vh7gPx2aIfNs=
-      Signatureversion:
-      - '2'
+      - ppi1NyAxhboFD6HbXHmiAhmW0c4SnDNx5wJU5Qo5b5U=
       Signtimestamp:
-      - '1752851433000'
+      - '1753005827100'
   response:
     status:
       code: 200
       message: OK
     headers:
       Date:
-      - Fri, 18 Jul 2025 15:10:34 GMT
+      - Sun, 20 Jul 2025 10:03:48 GMT
       Content-Type:
       - application/json
       Transfer-Encoding:
@@ -39,7 +35,7 @@ http_interactions:
       Connection:
       - keep-alive
       Web-Filter:
-      - skip-authentication
+      - authenticated
       Cf-Cache-Status:
       - DYNAMIC
       Strict-Transport-Security:
@@ -49,9 +45,17 @@ http_interactions:
       Server:
       - cloudflare
       Cf-Ray:
-      - 9612e8162f0cdcc8-FRA
+      - 9621a17abe21b084-FRA
     body:
       encoding: ASCII-8BIT
-      string: '{"symbol":"BTC_USDT","markPrice":"118056.01","time":1752851433287}'
-  recorded_at: Fri, 18 Jul 2025 15:10:34 GMT
+      string: |-
+        {
+          "symbol" : "BTC_USDT",
+          "maxLeverage" : 3,
+          "maxAvailableBuy" : "19613.97922300131723441",
+          "maxAvailableSell" : "0.110881970488594283",
+          "availableBuy" : "6536.3984176404979468",
+          "availableSell" : "0.000013720785753104"
+        }
+  recorded_at: Sun, 20 Jul 2025 10:03:48 GMT
 recorded_with: VCR 6.3.1

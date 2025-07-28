@@ -1,17 +1,14 @@
 require_relative '../helper'
 
 describe Poloniex::Client do
-  subject do
-    Poloniex::Client.new
-  end
+  let(:api_key){ENV.fetch('POLONIEX_API_KEY', '<API_KEY>')}
+  let(:api_secret){ENV.fetch('POLONIEX_API_SECRET', '<API_SECRET>')}
 
-  before do
-    Poloniex.configure do |config|
-      config.api_key = "test_api_key"
-      config.api_secret = "test_api_secret"
-      config.debug = false
-    end
-    WebMock.disable_net_connect!(allow_localhost: true)
+  subject do
+    Poloniex::Client.new(
+      api_key: api_key,
+      api_secret: api_secret
+    )
   end
 
   it "inherits from Poloniex::V1::Client" do

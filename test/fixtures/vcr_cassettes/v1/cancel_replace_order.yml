@@ -1,0 +1,99 @@
+---
+http_interactions:
+- request:
+    method: put
+    uri: https://api.poloniex.com/orders/?signTimestamp=1753025023196
+    body:
+      encoding: UTF-8
+      string: ''
+    headers:
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+      User-Agent:
+      - Ruby
+      Content-Type:
+      - application/json
+      Key:
+      - "<API_KEY>"
+      Signature:
+      - Y/cTS7XbA2mibgW1yrEFkJOlN+mo/LDM+Bxama5VbNE=
+      Signtimestamp:
+      - '1753025023196'
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Date:
+      - Sun, 20 Jul 2025 15:23:45 GMT
+      Content-Length:
+      - '0'
+      Connection:
+      - keep-alive
+      Cf-Cache-Status:
+      - DYNAMIC
+      Strict-Transport-Security:
+      - max-age=15552000; includeSubDomains
+      X-Content-Type-Options:
+      - nosniff
+      Server:
+      - cloudflare
+      Cf-Ray:
+      - 96237623884a367c-MAD
+    body:
+      encoding: UTF-8
+      string: ''
+  recorded_at: Sun, 20 Jul 2025 15:23:45 GMT
+- request:
+    method: put
+    uri: https://api.poloniex.com/orders/?signTimestamp=1753069762570
+    body:
+      encoding: UTF-8
+      string: "{}"
+    headers:
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+      User-Agent:
+      - Ruby
+      Content-Type:
+      - application/json
+      Key:
+      - "<API_KEY>"
+      Signature:
+      - SDqPQg9MTrUslZyEbTDKpRspr02M0XNCW51g6MbWQsk=
+      Signtimestamp:
+      - '1753069762570'
+  response:
+    status:
+      code: 401
+      message: Unauthorized
+    headers:
+      Date:
+      - Mon, 21 Jul 2025 03:49:24 GMT
+      Content-Type:
+      - application/json
+      Content-Length:
+      - '38'
+      Connection:
+      - keep-alive
+      Web-Filter:
+      - unauthenticated
+      Cf-Cache-Status:
+      - DYNAMIC
+      Strict-Transport-Security:
+      - max-age=15552000; includeSubDomains
+      X-Content-Type-Options:
+      - nosniff
+      Server:
+      - cloudflare
+      Cf-Ray:
+      - 9627ba679abaee4f-MXP
+    body:
+      encoding: UTF-8
+      string: '{"code":401,"message":"Illegal of ip"}'
+  recorded_at: Mon, 21 Jul 2025 03:49:24 GMT
+recorded_with: VCR 6.3.1

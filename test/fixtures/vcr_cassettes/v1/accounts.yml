@@ -2,7 +2,7 @@
 http_interactions:
 - request:
     method: get
-    uri: https://api.poloniex.com/accounts?signTimestamp=1753098189730
+    uri: https://api.poloniex.com/accounts?signTimestamp=1754642592347
     body:
       encoding: US-ASCII
       string: ''
@@ -18,16 +18,16 @@ http_interactions:
       Key:
       - "<API_KEY>"
       Signature:
-      - ROCwSTyfXyebW1pa249ytfq1tgugBeu8o11neF2d3HU=
+      - mSBaHQX0VdEpDVb+hhTRlSn6OTj4AjzjauFxT/YP26Y=
       Signtimestamp:
-      - '1753098189730'
+      - '1754642592347'
   response:
     status:
       code: 200
       message: OK
     headers:
       Date:
-      - Mon, 21 Jul 2025 11:43:09 GMT
+      - Fri, 08 Aug 2025 08:43:13 GMT
       Content-Type:
       - application/json
       Transfer-Encoding:
@@ -45,7 +45,7 @@ http_interactions:
       Server:
       - cloudflare
       Cf-Ray:
-      - 962a7066886da7ef-SYD
+      - 96bdb991cfe0f3b8-FRA
     body:
       encoding: ASCII-8BIT
       string: |-
@@ -54,5 +54,5 @@ http_interactions:
           "accountType" : "SPOT",
           "accountState" : "NORMAL"
         } ]
-  recorded_at: Mon, 21 Jul 2025 11:43:09 GMT
+  recorded_at: Fri, 08 Aug 2025 08:43:13 GMT
 recorded_with: VCR 6.3.1

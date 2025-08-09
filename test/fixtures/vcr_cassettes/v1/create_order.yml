@@ -2,10 +2,10 @@
 http_interactions:
 - request:
     method: post
-    uri: https://api.poloniex.com/orders?signTimestamp=1753098108296
+    uri: https://api.poloniex.com/orders
     body:
       encoding: UTF-8
-      string: '{"price":20000,"quantity":0.001,"side":"BUY","symbol":"BTC_USDT","type":"LIMIT"}'
+      string: '{"symbol":"BTC_USDT","side":"BUY","type":"LIMIT","price":"20000","quantity":"0.001"}'
     headers:
       Accept-Encoding:
       - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
@@ -14,28 +14,28 @@ http_interactions:
       User-Agent:
       - Ruby
       Content-Type:
-      - application/json
+      - application/json; charset=UTF-8
       Key:
       - "<API_KEY>"
       Signature:
-      - tjSrLAlH8mm/NHpYnCzncyUUzMNYTh9WKYD+ABJRNnA=
+      - vKKqleDU9hwyG672jocprwLTToFe8JUQAkQmvg1y8Qo=
       Signtimestamp:
-      - '1753098108296'
+      - '1754723621639'
   response:
     status:
-      code: 401
-      message: Unauthorized
+      code: 200
+      message: OK
     headers:
       Date:
-      - Mon, 21 Jul 2025 11:41:48 GMT
+      - Sat, 09 Aug 2025 07:13:41 GMT
       Content-Type:
       - application/json
-      Content-Length:
-      - '44'
+      Transfer-Encoding:
+      - chunked
       Connection:
       - keep-alive
       Web-Filter:
-      - unauthenticated
+      - authenticated
       Cf-Cache-Status:
       - DYNAMIC
       Strict-Transport-Security:
@@ -45,9 +45,13 @@ http_interactions:
       Server:
       - cloudflare
       Cf-Ray:
-      - 962a6e6a2d46aae9-SYD
+      - 96c573cbf826e7f1-SYD
     body:
-      encoding: UTF-8
-      string: '{"code":401,"message":"Invaid of signature"}'
-  recorded_at: Mon, 21 Jul 2025 11:41:48 GMT
+      encoding: ASCII-8BIT
+      string: |-
+        {
+          "id" : "477132370584080384",
+          "clientOrderId" : ""
+        }
+  recorded_at: Sat, 09 Aug 2025 07:13:41 GMT
 recorded_with: VCR 6.3.1

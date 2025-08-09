@@ -7,6 +7,7 @@ require_relative './V2/Client'
 module Poloniex
   class Client
 
+    ALLOWABLE_VERBS = %w{GET POST PUT DELETE}
     API_HOST = 'api.poloniex.com'
 
     # Public endpoints

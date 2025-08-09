@@ -8,9 +8,12 @@ require 'json'
 require 'logger'
 require 'openssl'
 
+require_relative '../Client'
 require_relative '../Configuration'
 require_relative '../Error'
+require_relative '../V1'
 require_relative '../../Hash/x_www_form_urlencode'
+require_relative '../../Object/inQ'
 
 module Poloniex
   module V1
@@ -50,8 +53,8 @@ module Poloniex
       end
 
       ### System Timestamp
-      ### GET https://api.poloniex.com/v2/currencies
-      ### GET https://api.poloniex.com/v2/currencies/{currency}
+      ### GET https://api.poloniex.com/timestamp
+      ### GET https://api.poloniex.com/timestamp
       ### https://api-docs.poloniex.com/spot/api/public/reference-data#system-timestamp
       def timestamp
         response = get(path: '/timestamp')
@@ -525,58 +528,118 @@ module Poloniex
         @logger = logger || configuration&.logger || Poloniex.configuration.logger
       end
 
-      def request_timestamp
-        @request_timestamp ||= (Time.now.to_f * 1000).to_i.to_s
+      def get(path:, args: {})
+        do_request(verb: 'GET', path: path, args: args)
       end
 
-      def message(verb:, path:, sorted_args_with_timestamp: {}, sorted_args_without_timestamp: {})
-        case verb
-        when 'GET', 'DELETE'
-          [verb, path, sorted_args_with_timestamp.x_www_form_urlencode]
-        when 'POST', 'PUT'
-          request_body = JSON.generate(sorted_args_without_timestamp)
-          [verb, path, "requestBody=#{request_body}&signTimestamp=#{request_timestamp}"]
-        else
-          raise ArgumentError, "Unsupported HTTP verb: #{verb}"
-        end.join("\n")
+      def post(path:, args: {})
+        do_request(verb: 'POST', path: path, args: args)
       end
 
-      def signature(message)
-        digest = OpenSSL::HMAC.digest('sha256', @api_secret, message)
-        Base64.strict_encode64(digest)
+      def delete(path:, args: {})
+        do_request(verb: 'DELETE', path: path, args: args)
       end
 
-      def request_string(path, verb)
-        case verb
-        when 'GET', 'DELETE'
-          "https://#{Poloniex::Client::API_HOST}#{self.class.path_prefix}#{path}"
-        when 'POST', 'PUT'
-          timestamp_param = {signTimestamp: request_timestamp}.x_www_form_urlencode
-          "https://#{Poloniex::Client::API_HOST}#{self.class.path_prefix}#{path}?#{timestamp_param}"
+      def put(path:, args: {})
+        do_request(verb: 'PUT', path: path, args: args)
+      end
+
+      def do_request(verb:, path:, args: {})
+        verb = verb.to_s.upcase
+        raise ArgumentError, "Unsupported HTTP method: #{verb}" unless verb.in?(Poloniex::Client::ALLOWABLE_VERBS)
+        request_string = request_string(verb: , path:)
+        args = args(verb: verb, path: path, supplied_args: args)
+        headers = headers(verb: verb, path: path, args: args)
+        log_request(verb: verb, request_string: request_string, args: args, headers: headers) if use_logging?
+        response =
+          if verb.in?(%w{POST PUT}) && args.is_a?(Hash) && (args.key?(:body) || args.key?('body'))
+            raw_body = args[:body] || args['body']
+            HTTP.send(verb.downcase, request_string, raw_body, headers)
+          else
+            HTTP.send(verb.downcase, request_string, args, headers)
+          end
+        @request_timestamp = nil
+        response
+      end
+
+      def request_string(verb:, path:)
+        "https://#{Poloniex::Client::API_HOST}#{self.class.path_prefix}#{path}"
+      end
+
+      def args(verb:, path:, supplied_args:)
+        return supplied_args if supplied_args.is_a?(Array) # create_multiple_orders() supplies an array.
+        args = supplied_args.reject{|_, v| v.nil?}.transform_keys(&:to_s).transform_values(&:to_s)
+        if verb.in?(%w{POST PUT})
+          return { body: '' } if args.empty?
+          return { body: request_body(args) }
         end
+        if verb.in?(%w{GET DELETE}) && use_auth?(path)
+          args.merge!("signTimestamp" => request_timestamp.to_s)
+        end
+        args
       end
 
-      def headers(signature)
-        {
-          'Content-Type' => 'application/json',
-          'key' => @api_key,
-          'signature' => signature,
-          'signTimestamp' => request_timestamp
-        }
+      def headers(verb:, path:, args:)
+        headers = {}
+        if use_auth?(path)
+          if verb.in?(%w{POST PUT})
+            if args.is_a?(Hash) && (args.key?(:body) || args.key?('body'))
+              body_str = args[:body] || args['body']
+              headers["Content-Type"] = "application/json; charset=UTF-8" unless body_str.to_s.empty?
+            else
+              headers["Content-Type"] = "application/json; charset=UTF-8"
+            end
+          end
+          headers.merge!(
+            'key' => @api_key,
+            'signature' => signature(verb: verb, path: path, args: args),
+            'signTimestamp' => request_timestamp.to_s
+          )
+        end
+        headers
       end
 
-      def use_logging?
-        !@logger.nil?
+      def request_timestamp
+        @request_timestamp ||= (Time.now.to_f * 1000).to_i
       end
 
-      def log_args?(args)
-        !args.values.all?(&:nil?)
+      def signature_message(verb:, path:, args:)
+        case verb
+        when 'GET', 'DELETE'
+          args_for_signing = args.merge("signTimestamp" => request_timestamp.to_s).transform_values(&:to_s)
+          signed_args = args_for_signing.sort_by{|k, _| k}.to_h.x_www_form_urlencode
+        when 'POST', 'PUT'
+          body_str = request_body(args)
+          signed_args = "requestBody=#{body_str}&signTimestamp=#{request_timestamp}"
+        end
+        "#{verb}\n#{path}\n#{signed_args}"
+      end
+
+      def request_body(args)
+        return '' if args.nil?
+        if args.respond_to?(:[]) && (args.key?(:body) || args.key?('body'))
+          return args[:body] || args['body']
+        end
+        return '' if args.empty?
+        JSON.generate(args, separators: [',', ':'])
+      end
+
+      def signature(verb:, path:, args:)
+        digest = OpenSSL::HMAC.digest("sha256", @api_secret, signature_message(verb: verb, path: path, args: args).encode("utf-8"))
+        Base64.strict_encode64(digest)
       end
 
       def log_request(verb:, request_string:, args:, headers:)
         log_string = "#{verb} #{request_string}\n"
         if log_args?(args)
           log_string << "  Args: #{args}\n"
+        end
+        begin
+          sig_msg = signature_message(verb: verb, path: request_string.gsub(%r{^https?://[^/]+}, ''), args: args)
+          sig_val = signature(verb: verb, path: request_string.gsub(%r{^https?://[^/]+}, ''), args: args)
+          log_string << "  SigMsg: #{sig_msg}\n"
+          log_string << "  Sig: #{sig_val}\n"
+        rescue => _
         end
         log_string << "  Headers: #{headers}\n"
         @logger.info(log_string)
@@ -596,48 +659,15 @@ module Poloniex
         @logger.error(log_string)
       end
 
-      def do_request(verb:, path:, args: {})
-        raise ArgumentError, "Unsupported HTTP verb: #{verb}" unless ['GET', 'POST', 'PUT', 'DELETE'].include?(verb)
-        args = args.is_a?(Array)? args : args.reject{|_, v| v.nil?} # create_multiple_orders() supplies an array.
-        args_with_timestamp = args.merge(signTimestamp: request_timestamp)
-        sorted_args_with_timestamp = args_with_timestamp.sort.to_h
-        sorted_args_without_timestamp = args.sort.to_h
-        message = message(verb: verb, path: path, sorted_args_with_timestamp: sorted_args_with_timestamp, sorted_args_without_timestamp: sorted_args_without_timestamp)
-        @logger.info("Signature message:\n#{message}") if use_logging?
-        signature = signature(message)
-        headers = headers(signature)
-        case verb
-        when 'GET', 'DELETE'
-          log_request(verb: verb, request_string: request_string(path, verb), args: sorted_args_with_timestamp, headers: headers) if use_logging?
-          response = HTTP.send(verb.to_s.downcase, request_string(path, verb), sorted_args_with_timestamp, headers)
-        when 'POST', 'PUT'
-          log_request(verb: verb, request_string: request_string(path, verb), args: sorted_args_without_timestamp, headers: headers) if use_logging?
-          response = HTTP.send(verb.to_s.downcase, request_string(path, verb), sorted_args_without_timestamp, headers)
-        end
-        @request_timestamp = nil
-        response
-      end
-
-      def get(path:, args: {})
-        do_request(verb: 'GET', path: path, args: args)
-      end
-
-      def post(path:, args: {})
-        do_request(verb: 'POST', path: path, args: args)
-      end
-
-      def delete(path:, args: {})
-        do_request(verb: 'DELETE', path: path, args: args)
-      end
-
-      def put(path:, args: {})
-        do_request(verb: 'PUT', path: path, args: args)
-      end
-
       def handle_response(response)
         if response.success?
-          parsed_body = JSON.parse(response.body)
-          log_response(code: response.code, message: response.message, body: response.body) if use_logging?
+          body = response.body.to_s
+          if body.strip.empty?
+            log_response(code: response.code, message: response.message, body: body) if use_logging?
+            return {}
+          end
+          parsed_body = JSON.parse(body)
+          log_response(code: response.code, message: response.message, body: body) if use_logging?
           parsed_body
         else
           case response.code.to_i
@@ -671,6 +701,25 @@ module Poloniex
             )
           end
         end
+      end
+
+      def log_args?(args)
+        return false if args.nil?
+        return !args.values.all?(&:nil?) if args.respond_to?(:values) # Hash-like
+        return !args.empty? if args.respond_to?(:empty?) # Array-like or others
+        true
+      end
+
+      def public_path?(path)
+        Poloniex::V1::PUBLIC_PATH_PREFIXES.any?{|prefix| path.start_with?(prefix)}
+      end
+
+      def use_auth?(path)
+        !public_path?(path)
+      end
+
+      def use_logging?
+        !@logger.nil?
       end
     end
   end

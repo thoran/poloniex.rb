@@ -1,11 +1,11 @@
 ---
 http_interactions:
 - request:
-    method: post
-    uri: https://api.poloniex.com/accounts/transfer
+    method: delete
+    uri: https://api.poloniex.com/orders/32487004629499904?id=32487004629499904&signTimestamp=1754743138269
     body:
-      encoding: UTF-8
-      string: '{"currency":"USDT","amount":"10.5","fromAccount":"SPOT","toAccount":"FUTURES"}'
+      encoding: US-ASCII
+      string: ''
     headers:
       Accept-Encoding:
       - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
@@ -14,30 +14,28 @@ http_interactions:
       User-Agent:
       - Ruby
       Content-Type:
-      - application/json; charset=UTF-8
+      - application/json
       Key:
       - "<API_KEY>"
       Signature:
-      - cEMY2qggsn88lmxTCbUvsL1lPAQoH07/Cz25zUFjBx4=
+      - GsOORlWkbgsjmRkW8UG7tP+5LyDgcXf/R7XnOxWFcZk=
       Signtimestamp:
-      - '1754729295139'
+      - '1753012219042'
   response:
     status:
       code: 200
       message: OK
     headers:
       Date:
-      - Sat, 09 Aug 2025 08:48:15 GMT
+      - Sun, 20 Jul 2025 11:50:20 GMT
       Content-Type:
       - application/json
       Content-Length:
-      - '71'
+      - '38'
       Connection:
       - keep-alive
-      Cf-Ray:
-      - 96c5fe519ee16c65-SYD
       Web-Filter:
-      - authenticated
+      - unauthenticated
       Cf-Cache-Status:
       - DYNAMIC
       Strict-Transport-Security:
@@ -46,11 +44,17 @@ http_interactions:
       - nosniff
       Server:
       - cloudflare
+      Cf-Ray:
+      - 96223d884e460b66-AMS
     body:
       encoding: UTF-8
       string: |-
         {
-          "transferId": "2977"
+          "orderId": "32487004629499904",
+          "clientOrderId": "54321",
+          "state": "PENDING_CANCEL",
+          "code": 200,
+          "message": ""
         }
-  recorded_at: Sat, 09 Aug 2025 08:48:15 GMT
+  recorded_at: Sun, 20 Jul 2025 11:50:20 GMT
 recorded_with: VCR 6.3.1

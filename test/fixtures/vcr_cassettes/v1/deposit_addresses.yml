@@ -2,7 +2,7 @@
 http_interactions:
 - request:
     method: get
-    uri: https://api.poloniex.com/wallets/addresses?signTimestamp=1753012226144
+    uri: https://api.poloniex.com/wallets/addresses?signTimestamp=1754738233953
     body:
       encoding: US-ASCII
       string: ''
@@ -13,29 +13,27 @@ http_interactions:
       - "*/*"
       User-Agent:
       - Ruby
-      Content-Type:
-      - application/json
       Key:
       - "<API_KEY>"
       Signature:
-      - R3NhB/Z3XLwr2U0mInwE7WG4GfYr+72yBL5UEGUe+ZQ=
+      - Au4AQ2OirLeAYjInDLLkMYWVslS+6rxt86rwIa5WKhU=
       Signtimestamp:
-      - '1753012226144'
+      - '1754738233953'
   response:
     status:
-      code: 401
-      message: Unauthorized
+      code: 200
+      message: OK
     headers:
       Date:
-      - Sun, 20 Jul 2025 11:50:27 GMT
+      - Sat, 09 Aug 2025 11:17:14 GMT
       Content-Type:
       - application/json
-      Content-Length:
-      - '38'
+      Transfer-Encoding:
+      - chunked
       Connection:
       - keep-alive
       Web-Filter:
-      - unauthenticated
+      - authenticated
       Cf-Cache-Status:
       - DYNAMIC
       Strict-Transport-Security:
@@ -45,9 +43,18 @@ http_interactions:
       Server:
       - cloudflare
       Cf-Ray:
-      - 96223db2bb951c08-AMS
+      - 96c6d88b0f9e1544-SYD
     body:
-      encoding: UTF-8
-      string: '{"code":401,"message":"Illegal of ip"}'
-  recorded_at: Sun, 20 Jul 2025 11:50:27 GMT
+      encoding: ASCII-8BIT
+      string: |-
+        {
+          "AAVE": "0xae8d0d7c520daebb1580dabaa91f3ccf8ae492f5",
+          "AMP": "0xae8d0d7c520daebb1580dabaa91f3ccf8ae492f5",
+          "ATOM": "cosmos18clcz526q274gdvmjv820f45pua03rhn4xplkz",
+          "BTC" : "bb0dabaebb1cs59h6T2V9rdX34qTza9Wdu",
+          "XLMBEAR": "0xae8d0d7c520daebb1580dabaa91f3ccf8ae492f5",
+          "XLMBULL": "0xae8d0d7c520daebb1580dabaa91f3ccf8ae492f5",
+          "XYM": "bqz8hDK2mm"
+        }
+  recorded_at: Sat, 09 Aug 2025 11:17:14 GMT
 recorded_with: VCR 6.3.1

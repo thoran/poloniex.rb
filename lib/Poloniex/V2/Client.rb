@@ -28,7 +28,7 @@ module Poloniex
       ### https://api-docs.poloniex.com/spot/api/public/reference-data#currencyv2-information
       def currencies(currency = nil)
         path = '/currencies'
-        path = "/currencies/{currency}" if currency
+        path = "/currencies/#{currency}" if currency
         response = get(path: path)
         handle_response(response)
       end

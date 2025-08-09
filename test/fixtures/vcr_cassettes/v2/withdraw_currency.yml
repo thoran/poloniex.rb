@@ -2,10 +2,10 @@
 http_interactions:
 - request:
     method: post
-    uri: https://api.poloniex.com/accounts/transfer
+    uri: https://api.poloniex.com/v2/wallets/withdraw
     body:
       encoding: UTF-8
-      string: '{"currency":"USDT","amount":"10.5","fromAccount":"SPOT","toAccount":"FUTURES"}'
+      string: '{"address":"131rdg5Rzn6BFufnnQaHhVa5ZtRU1J2EZR","amount":2000,"coin":"BTC","network":"BTC"}'
     headers:
       Accept-Encoding:
       - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
@@ -14,30 +14,34 @@ http_interactions:
       User-Agent:
       - Ruby
       Content-Type:
-      - application/json; charset=UTF-8
+      - application/json
       Key:
       - "<API_KEY>"
+      Signaturemethod:
+      - HmacSHA256
       Signature:
-      - cEMY2qggsn88lmxTCbUvsL1lPAQoH07/Cz25zUFjBx4=
+      - AenUbiSiXx2XNZCuP28+mYsoDtwLX6EiflZ3xLbvVas=
+      Signatureversion:
+      - '2'
       Signtimestamp:
-      - '1754729295139'
+      - '1754744925098'
   response:
     status:
-      code: 200
-      message: OK
+      code: 401
+      message: Unauthorized
     headers:
       Date:
-      - Sat, 09 Aug 2025 08:48:15 GMT
+      - Sat, 09 Aug 2025 13:08:45 GMT
       Content-Type:
       - application/json
       Content-Length:
-      - '71'
+      - '44'
       Connection:
       - keep-alive
       Cf-Ray:
-      - 96c5fe519ee16c65-SYD
+      - 96c77be7098b9866-SYD
       Web-Filter:
-      - authenticated
+      - unauthenticated
       Cf-Cache-Status:
       - DYNAMIC
       Strict-Transport-Security:
@@ -48,9 +52,6 @@ http_interactions:
       - cloudflare
     body:
       encoding: UTF-8
-      string: |-
-        {
-          "transferId": "2977"
-        }
-  recorded_at: Sat, 09 Aug 2025 08:48:15 GMT
+      string: '{"message":"Invaid of signature","code":401}'
+  recorded_at: Sat, 09 Aug 2025 13:08:45 GMT
 recorded_with: VCR 6.3.1

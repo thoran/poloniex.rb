@@ -1,10 +1,10 @@
 ---
 http_interactions:
 - request:
-    method: put
-    uri: https://api.poloniex.com/orders/blue
+    method: get
+    uri: https://api.poloniex.com/orders/killSwitchStatus?signTimestamp=1754743797526
     body:
-      encoding: UTF-8
+      encoding: US-ASCII
       string: ''
     headers:
       Accept-Encoding:
@@ -16,22 +16,26 @@ http_interactions:
       Key:
       - "<API_KEY>"
       Signature:
-      - Uu6EbpjXCEpNkqxOirWeJrAkb/wDcUO6fApea3YDUO4=
+      - z6hdtel2P3oR7gPjI274WGqL978vLBkSbr+rP9MMcgc=
       Signtimestamp:
-      - '1754723578959'
+      - '1754743797526'
   response:
     status:
       code: 200
       message: OK
     headers:
       Date:
-      - Sat, 09 Aug 2025 07:12:59 GMT
+      - Sat, 09 Aug 2025 12:49:57 GMT
+      Content-Type:
+      - application/json
       Content-Length:
-      - '0'
+      - '50'
       Connection:
       - keep-alive
       Cf-Ray:
-      - 96c572c4f8d7e22e-MRS
+      - 96c7605f8a481d58-SYD
+      Web-Filter:
+      - authenticated
       Cf-Cache-Status:
       - DYNAMIC
       Strict-Transport-Security:
@@ -42,6 +46,6 @@ http_interactions:
       - cloudflare
     body:
       encoding: UTF-8
-      string: ''
-  recorded_at: Sat, 09 Aug 2025 07:13:00 GMT
+      string: '{"code": 25020,"message": "No active kill switch"}'
+  recorded_at: Sat, 09 Aug 2025 12:49:57 GMT
 recorded_with: VCR 6.3.1

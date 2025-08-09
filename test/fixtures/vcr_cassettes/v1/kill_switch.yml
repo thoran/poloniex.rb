@@ -1,11 +1,11 @@
 ---
 http_interactions:
 - request:
-    method: put
-    uri: https://api.poloniex.com/orders/blue
+    method: post
+    uri: https://api.poloniex.com/orders/killSwitch
     body:
       encoding: UTF-8
-      string: ''
+      string: '{"timeout":"10"}'
     headers:
       Accept-Encoding:
       - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
@@ -13,25 +13,29 @@ http_interactions:
       - "*/*"
       User-Agent:
       - Ruby
+      Content-Type:
+      - application/json; charset=UTF-8
       Key:
       - "<API_KEY>"
       Signature:
-      - Uu6EbpjXCEpNkqxOirWeJrAkb/wDcUO6fApea3YDUO4=
+      - NY6i/UTu81pwymsKRD3W8rZJaR6BYUAjAztMCQkOZOo=
       Signtimestamp:
-      - '1754723578959'
+      - '1754743762946'
   response:
     status:
       code: 200
       message: OK
     headers:
       Date:
-      - Sat, 09 Aug 2025 07:12:59 GMT
-      Content-Length:
-      - '0'
+      - Sat, 09 Aug 2025 12:49:23 GMT
+      Content-Type:
+      - application/json
+      Transfer-Encoding:
+      - chunked
       Connection:
       - keep-alive
-      Cf-Ray:
-      - 96c572c4f8d7e22e-MRS
+      Web-Filter:
+      - authenticated
       Cf-Cache-Status:
       - DYNAMIC
       Strict-Transport-Security:
@@ -40,8 +44,10 @@ http_interactions:
       - nosniff
       Server:
       - cloudflare
+      Cf-Ray:
+      - 96c75f8799f6aacb-SYD
     body:
-      encoding: UTF-8
-      string: ''
-  recorded_at: Sat, 09 Aug 2025 07:13:00 GMT
+      encoding: ASCII-8BIT
+      string: '{"startTime":"1754743763199","cancellationTime":"1754743773199"}'
+  recorded_at: Sat, 09 Aug 2025 12:49:23 GMT
 recorded_with: VCR 6.3.1

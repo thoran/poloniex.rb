@@ -2,10 +2,10 @@
 http_interactions:
 - request:
     method: post
-    uri: https://api.poloniex.com/accounts/transfer
+    uri: https://api.poloniex.com/orders/batch
     body:
       encoding: UTF-8
-      string: '{"currency":"USDT","amount":"10.5","fromAccount":"SPOT","toAccount":"FUTURES"}'
+      string: '[{"symbol":"BTC_USDT","side":"BUY","type":"LIMIT","quantity":0.01,"price":15000},{"symbol":"BTC_USDT","side":"BUY","type":"LIMIT","quantity":0.1,"price":8000}]'
     headers:
       Accept-Encoding:
       - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
@@ -18,24 +18,22 @@ http_interactions:
       Key:
       - "<API_KEY>"
       Signature:
-      - cEMY2qggsn88lmxTCbUvsL1lPAQoH07/Cz25zUFjBx4=
+      - gWpljfzojd9Br64wBEG8GVNZJIrbfBqeI+IVdS8rqGo=
       Signtimestamp:
-      - '1754729295139'
+      - '1754742014643'
   response:
     status:
       code: 200
       message: OK
     headers:
       Date:
-      - Sat, 09 Aug 2025 08:48:15 GMT
+      - Sat, 09 Aug 2025 12:20:15 GMT
       Content-Type:
       - application/json
-      Content-Length:
-      - '71'
+      Transfer-Encoding:
+      - chunked
       Connection:
       - keep-alive
-      Cf-Ray:
-      - 96c5fe519ee16c65-SYD
       Web-Filter:
       - authenticated
       Cf-Cache-Status:
@@ -46,11 +44,17 @@ http_interactions:
       - nosniff
       Server:
       - cloudflare
+      Cf-Ray:
+      - 96c734d8cd05a937-SYD
     body:
-      encoding: UTF-8
+      encoding: ASCII-8BIT
       string: |-
-        {
-          "transferId": "2977"
-        }
-  recorded_at: Sat, 09 Aug 2025 08:48:15 GMT
+        [ {
+          "id" : "477209516899893248",
+          "clientOrderId" : ""
+        }, {
+          "id" : "477209516899893249",
+          "clientOrderId" : ""
+        } ]
+  recorded_at: Sat, 09 Aug 2025 12:20:14 GMT
 recorded_with: VCR 6.3.1

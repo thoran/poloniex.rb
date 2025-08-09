@@ -30,7 +30,7 @@ describe "Poloniex::V1::Client Wallet Endpoints" do
   describe "#wallets_activity" do
     it "fetches deposit history" do
       VCR.use_cassette('v1/wallets_activity') do
-        response = subject.wallets_activity(limit: 10)
+        response = subject.wallets_activity(start: 1754734725, finish: 1754739175)
         assert_kind_of Hash, response
       end
     end
@@ -50,7 +50,7 @@ describe "Poloniex::V1::Client Wallet Endpoints" do
       VCR.use_cassette('v1/withdraw_currency') do
         response = subject.withdraw_currency(
           currency: "BTC",
-          amount: "0.001",
+          amount: "0.1",
           address: "1A1zP1eP5QGefi2DMPTfTL5SLmv7DivfNa"
         )
         assert_kind_of Hash, response

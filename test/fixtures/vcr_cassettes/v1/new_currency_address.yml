@@ -1,11 +1,11 @@
 ---
 http_interactions:
 - request:
-    method: put
-    uri: https://api.poloniex.com/orders/blue
+    method: post
+    uri: https://api.poloniex.com/wallets/address
     body:
       encoding: UTF-8
-      string: ''
+      string: '{"currency":"BTC"}'
     headers:
       Accept-Encoding:
       - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
@@ -13,25 +13,29 @@ http_interactions:
       - "*/*"
       User-Agent:
       - Ruby
+      Content-Type:
+      - application/json; charset=UTF-8
       Key:
       - "<API_KEY>"
       Signature:
-      - Uu6EbpjXCEpNkqxOirWeJrAkb/wDcUO6fApea3YDUO4=
+      - MIjHnbR7Gh7LdgKcBlzlhtRjeTD+Viz9X4FJttiABeg=
       Signtimestamp:
-      - '1754723578959'
+      - '1754740429797'
   response:
     status:
       code: 200
       message: OK
     headers:
       Date:
-      - Sat, 09 Aug 2025 07:12:59 GMT
-      Content-Length:
-      - '0'
+      - Sat, 09 Aug 2025 11:53:50 GMT
+      Content-Type:
+      - application/json
+      Transfer-Encoding:
+      - chunked
       Connection:
       - keep-alive
-      Cf-Ray:
-      - 96c572c4f8d7e22e-MRS
+      Web-Filter:
+      - authenticated
       Cf-Cache-Status:
       - DYNAMIC
       Strict-Transport-Security:
@@ -40,8 +44,13 @@ http_interactions:
       - nosniff
       Server:
       - cloudflare
+      Cf-Ray:
+      - 96c70e2749fbe212-SYD
     body:
-      encoding: UTF-8
-      string: ''
-  recorded_at: Sat, 09 Aug 2025 07:13:00 GMT
+      encoding: ASCII-8BIT
+      string: |-
+        {
+          "address" : "15Z59h6T2V9scsrdX34qTzaLb9WbQTjuJE"
+        }
+  recorded_at: Sat, 09 Aug 2025 11:53:50 GMT
 recorded_with: VCR 6.3.1

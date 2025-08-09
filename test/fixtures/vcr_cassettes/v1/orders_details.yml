@@ -1,0 +1,72 @@
+---
+http_interactions:
+- request:
+    method: get
+    uri: https://api.poloniex.com/orders/21934611974062080?id=21934611974062080&signTimestamp=1754742909214
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+      User-Agent:
+      - Ruby
+      Key:
+      - "<API_KEY>"
+      Signature:
+      - hwyDOcd1aaD12yB+JZR4cDyJwnLYS5zHdrLkI58B1LI=
+      Signtimestamp:
+      - '1754742909214'
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Date:
+      - Sat, 09 Aug 2025 12:35:09 GMT
+      Content-Type:
+      - application/json
+      Transfer-Encoding:
+      - chunked
+      Connection:
+      - keep-alive
+      Web-Filter:
+      - authenticated
+      Cf-Cache-Status:
+      - DYNAMIC
+      Strict-Transport-Security:
+      - max-age=15552000; includeSubDomains
+      X-Content-Type-Options:
+      - nosniff
+      Server:
+      - cloudflare
+      Cf-Ray:
+      - 96c74aafae5a572d-SYD
+    body:
+      encoding: ASCII-8BIT
+      string: |-
+        {
+          "id": "21934611974062080",
+          "clientOrderId": "123",
+          "symbol": "TRX_USDC",
+          "state": "NEW",
+          "accountType": "SPOT",
+          "side": "SELL",
+          "type": "LIMIT",
+          "timeInForce": "GTC",
+          "quantity": "1.00",
+          "price": "10.00",
+          "avgPrice": "0.00",
+          "amount": "0.00",
+          "filledQuantity": "0.00",
+          "filledAmount": "0.00",
+          "createTime": 1646196019020,
+          "updateTime": 1646196019020,
+          "orderSource": "API",
+          "loan": false,
+          "cancelReason": 0
+        }
+  recorded_at: Sat, 09 Aug 2025 12:35:09 GMT
+recorded_with: VCR 6.3.1

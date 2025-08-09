@@ -4,8 +4,7 @@ require 'minitest-spec-context'
 require 'vcr'
 require 'webmock'
 
-$LOAD_PATH.unshift(File.expand_path('../lib', __dir__))
-require 'poloniex'
+require_relative '../lib/poloniex'
 
 VCR.configure do |config|
   config.cassette_library_dir = 'test/fixtures/vcr_cassettes'

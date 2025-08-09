@@ -48,6 +48,48 @@ http_interactions:
       - 96237023ab38e27e-MRS
     body:
       encoding: UTF-8
-      string: "[ ]"
+      string: |-
+        [
+          {
+            "id": "24993088082542592",
+            "clientOrderId": "",
+            "symbol": "ELON_USDC",
+            "state": "NEW",
+            "accountType": "SPOT",
+            "side": "SELL",
+            "type": "MARKET",
+            "timeInForce": "GTC",
+            "quantity": "1.00",
+            "price": "0.00",
+            "avgPrice": "0.00",
+            "amount": "0.00",
+            "filledQuantity": "0.00",
+            "filledAmount": "0.00",
+            "createTime": 1646925216548,
+            "updateTime": 1646925216548,
+            "orderSource": "API",
+            "loan": false
+          },
+          {
+            "id": "21934611974062080",
+            "clientOrderId": "123",
+            "symbol": "TRX_USDC",
+            "state": "NEW",
+            "accountType": "SPOT",
+            "side": "SELL",
+            "type": "LIMIT",
+            "timeInForce": "GTC",
+            "quantity": "1.00",
+            "price": "10.00",
+            "avgPrice": "0.00",
+            "amount": "0.00",
+            "filledQuantity": "0.00",
+            "filledAmount": "0.00",
+            "createTime": 1646196019020,
+            "updateTime": 1646196019020,
+            "orderSource": "API",
+            "loan": true
+          }
+        ]
   recorded_at: Sun, 20 Jul 2025 15:19:39 GMT
 recorded_with: VCR 6.3.1

@@ -1,11 +1,11 @@
 ---
 http_interactions:
 - request:
-    method: get
-    uri: https://api.poloniex.com/orders?signTimestamp=1753024498062
+    method: post
+    uri: https://api.poloniex.com/wallets/withdraw
     body:
-      encoding: US-ASCII
-      string: ''
+      encoding: UTF-8
+      string: '{"currency":"BTC","amount":"0.1","address":"1A1zP1eP5QGefi2DMPTfTL5SLmv7DivfNa"}'
     headers:
       Accept-Encoding:
       - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
@@ -14,26 +14,28 @@ http_interactions:
       User-Agent:
       - Ruby
       Content-Type:
-      - application/json
+      - application/json; charset=UTF-8
       Key:
       - "<API_KEY>"
       Signature:
-      - ATnFL50p53+oIQkdRx8t2+Q2DsabxyhE/ho37z/lICI=
+      - G9hfsWFR1AAtEz5yJ/RM2yOKn1CZ39aS0nzw6E7Utr0=
       Signtimestamp:
-      - '1753024498062'
+      - '1754739490163'
   response:
     status:
       code: 200
       message: OK
     headers:
       Date:
-      - Sun, 20 Jul 2025 15:14:59 GMT
+      - Sat, 09 Aug 2025 11:38:11 GMT
       Content-Type:
       - application/json
       Content-Length:
-      - '3'
+      - '87'
       Connection:
       - keep-alive
+      Cf-Ray:
+      - 96c6f736e996e7e8-SYD
       Web-Filter:
       - authenticated
       Cf-Cache-Status:
@@ -44,10 +46,11 @@ http_interactions:
       - nosniff
       Server:
       - cloudflare
-      Cf-Ray:
-      - 96236951c87003bd-MAD
     body:
       encoding: UTF-8
-      string: "[ ]"
-  recorded_at: Sun, 20 Jul 2025 15:14:59 GMT
+      string: |-
+        {
+            "withdrawalRequestsId": 33485231
+        }
+  recorded_at: Sat, 09 Aug 2025 11:38:11 GMT
 recorded_with: VCR 6.3.1

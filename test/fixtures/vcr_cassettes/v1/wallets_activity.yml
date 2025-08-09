@@ -1,0 +1,113 @@
+---
+http_interactions:
+- request:
+    method: get
+    uri: https://api.poloniex.com/wallets/activity?end=1754739175&signTimestamp=1754739293698&start=1754734725
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+      User-Agent:
+      - Ruby
+      Key:
+      - "<API_KEY>"
+      Signature:
+      - 7fgnqsPkI6Gc1YDAkvHoQYn4u+KJjPqYCBWyZ0FNnpw=
+      Signtimestamp:
+      - '1754739293698'
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Date:
+      - Sat, 09 Aug 2025 11:34:54 GMT
+      Content-Type:
+      - application/json
+      Content-Length:
+      - '45'
+      Connection:
+      - keep-alive
+      Cf-Ray:
+      - 96c6f26abab6db45-SYD
+      Web-Filter:
+      - authenticated
+      Cf-Cache-Status:
+      - DYNAMIC
+      Strict-Transport-Security:
+      - max-age=15552000; includeSubDomains
+      X-Content-Type-Options:
+      - nosniff
+      Server:
+      - cloudflare
+    body:
+      encoding: UTF-8
+      string: |-
+        {
+          "deposits":
+            [
+              {
+                "depositNumber": 7397520,
+                "currency": "BTC",
+                "address": "131rdg5Rzn6BFufnnQaHhVa5ZtRU1J2EZR",
+                "amount": "0.06830697",
+                "confirmations": 1,
+                "txid": "3a4b9b2404f6e6fb556c3e1d46a9752f5e70a93ac1718605c992b80aacd8bd1d",
+                "timestamp": 1506005439,
+                "status": "COMPLETED"
+              },
+              {
+                "depositNumber": 7397521,
+                "currency": "BCH",
+                "address": "1FhCkdKeMGa621mCpAtFYzeVfUBnHbooLj",
+                "amount": "10.00000000",
+                "confirmations": 5,
+                "txid": "eb2e0914105b02fbe6e17913d74b4e5950c1ba122eb71afdfc49e2c58b272456",
+                "timestamp": 1508436102,
+                "status": "COMPLETED"
+              },
+              {
+                "depositNumber": 7397518,
+                "currency": "ETH",
+                "address": "0xb7e033598cb94ef5a35349316d3a2e4f95f308da",
+                "amount": "29.99825341",
+                "confirmations": 53,
+                "txid": "f7e7eeb44edcad14c0f90a5fffb1cbb4b80e8f9652124a0838f6906ca939ccd2",
+                "timestamp": 1537305507,
+                "status": "COMPLETED"
+              }
+            ],
+          "withdrawals":
+            [
+              {
+                "withdrawalRequestsId": 7397527,
+                "currency": "ETC",
+                "address": "0x26419a62055af459d2cd69bb7392f5100b75e304",
+                "amount": "13.19951600",
+                "fee": "0.01000000",
+                "timestamp": 1506010932,
+                "status": "COMPLETED",
+                "txid": "343346392f82ac16e8c2604f2a604b7b2382d0e9d8030f673821f8de4b5f5bk",
+                "ipAddress": "1.2.3.4",
+                "paymentID": null
+              },
+              {
+                "withdrawalRequestsId": 7704882,
+                "currency": "ETH",
+                "address": "0x00c90335F92FfcD26C8c915c79d7aB424454B7c7",
+                "amount": "0.01318826",
+                "fee": "0.00500000",
+                "timestamp": 1507908127,
+                "status": "COMPLETED",
+                "txid": "423346392f82ac16e8c2604f2a604b7b2382d0e9d8030f673821f8de4b5f5a30",
+                "ipAddress": "1.2.3.4",
+                "paymentID": null
+              }
+            ]
+        }
+  recorded_at: Sat, 09 Aug 2025 11:34:53 GMT
+recorded_with: VCR 6.3.1

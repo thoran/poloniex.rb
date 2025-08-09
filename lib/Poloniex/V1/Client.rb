@@ -391,11 +391,10 @@ module Poloniex
       ### Create Multiple Orders
       ### POST https://api.poloniex.com/orders/batch
       ### https://api-docs.poloniex.com/spot/api/private/order#create-multiple-orders
-      # Need to fix http.rb first as I can't set the body by any other means than via a hash of arguments and that isn't suitable for this method.
-      # def create_multiple_orders(orders)
-      #   response = post(path: '/orders/batch', args: orders)
-      #   handle_response(response)
-      # end
+      def create_multiple_orders(orders)
+        response = post(path: '/orders/batch', args: orders)
+        handle_response(response)
+      end
 
       ### Cancel Replace Order
       ### PUT https://api.poloniex.com/orders/{id}
@@ -617,7 +616,7 @@ module Poloniex
 
       def request_body(args)
         return '' if args.nil?
-        if args.respond_to?(:[]) && (args.key?(:body) || args.key?('body'))
+        if args.respond_to?(:keys) && (args.key?(:body) || args.key?('body'))
           return args[:body] || args['body']
         end
         return '' if args.empty?
@@ -633,13 +632,6 @@ module Poloniex
         log_string = "#{verb} #{request_string}\n"
         if log_args?(args)
           log_string << "  Args: #{args}\n"
-        end
-        begin
-          sig_msg = signature_message(verb: verb, path: request_string.gsub(%r{^https?://[^/]+}, ''), args: args)
-          sig_val = signature(verb: verb, path: request_string.gsub(%r{^https?://[^/]+}, ''), args: args)
-          log_string << "  SigMsg: #{sig_msg}\n"
-          log_string << "  Sig: #{sig_val}\n"
-        rescue => _
         end
         log_string << "  Headers: #{headers}\n"
         @logger.info(log_string)

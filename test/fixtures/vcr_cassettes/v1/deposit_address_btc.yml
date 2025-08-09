@@ -2,7 +2,7 @@
 http_interactions:
 - request:
     method: get
-    uri: https://api.poloniex.com/wallets/addresses?currency=BTC&signTimestamp=1753012224964
+    uri: https://api.poloniex.com/wallets/addresses?currency=BTC&signTimestamp=1754738584696
     body:
       encoding: US-ASCII
       string: ''
@@ -13,29 +13,27 @@ http_interactions:
       - "*/*"
       User-Agent:
       - Ruby
-      Content-Type:
-      - application/json
       Key:
       - "<API_KEY>"
       Signature:
-      - ZTBLqCKHwh289hxQ30g+z2wFeax5scKgAih6rJ+32bo=
+      - nZ0d/zugDUJYRzHhnwyjS3CV7OCsmh4Z+jbLCBb+nqg=
       Signtimestamp:
-      - '1753012224964'
+      - '1754738584696'
   response:
     status:
-      code: 401
-      message: Unauthorized
+      code: 200
+      message: OK
     headers:
       Date:
-      - Sun, 20 Jul 2025 11:50:26 GMT
+      - Sat, 09 Aug 2025 11:23:05 GMT
       Content-Type:
       - application/json
-      Content-Length:
-      - '38'
+      Transfer-Encoding:
+      - chunked
       Connection:
       - keep-alive
       Web-Filter:
-      - unauthenticated
+      - authenticated
       Cf-Cache-Status:
       - DYNAMIC
       Strict-Transport-Security:
@@ -45,9 +43,12 @@ http_interactions:
       Server:
       - cloudflare
       Cf-Ray:
-      - 96223dab4a7a9f60-AMS
+      - 96c6e11b8c74e7ce-SYD
     body:
-      encoding: UTF-8
-      string: '{"code":401,"message":"Illegal of ip"}'
-  recorded_at: Sun, 20 Jul 2025 11:50:26 GMT
+      encoding: ASCII-8BIT
+      string: |-
+        {
+          "BTC" : "bb0dabaebb1cs59h6T2V9rdX34qTza9Wdu"
+        }
+  recorded_at: Sat, 09 Aug 2025 11:23:05 GMT
 recorded_with: VCR 6.3.1

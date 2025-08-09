@@ -13,17 +13,17 @@ describe Poloniex::V2::Client do
 
   describe "#currencies" do
     it "fetches all currencies" do
-      VCR.use_cassette('v1/currencies') do
+      VCR.use_cassette('v2/currencies') do
         response = subject.currencies
         _(response).must_be_kind_of(Array)
       end
     end
 
     it "fetches a specific currency" do
-      VCR.use_cassette('v1/currencies_btc') do
+      VCR.use_cassette('v2/currencies_btc') do
         response = subject.currencies('BTC')
         _(response).must_be_kind_of(Hash)
-        _(response.count).must_equal(1)
+        _(response.count).must_equal(2)
         _(response['BTC']).must_be_kind_of(Hash)
         _(response['BTC']['name']).must_equal('Bitcoin')
       end
@@ -31,21 +31,15 @@ describe Poloniex::V2::Client do
   end
 
   describe "#withdraw_currency" do
-    it "fetches all currencies" do
-      VCR.use_cassette('v1/withdraw_currency') do
+    it "performs a withdrawal" do
+      VCR.use_cassette('v2/withdraw_currency') do
         response = subject.withdraw_currency(
-          coin:,
-          network:,
-          amount:,
-          address:
+          coin: 'BTC',
+          network: 'BTC',
+          amount: 2000,
+          address: '131rdg5Rzn6BFufnnQaHhVa5ZtRU1J2EZR'
         )
         _(response).must_be_kind_of(Array)
-      end
-    end
-
-    it "fetches a specific currency" do
-      VCR.use_cassette('v1/currencies_btc') do
-        response = subject.withdraw_currency('BTC')
         _(response).must_be_kind_of(Hash)
         _(response.count).must_equal(1)
         _(response['BTC']).must_be_kind_of(Hash)

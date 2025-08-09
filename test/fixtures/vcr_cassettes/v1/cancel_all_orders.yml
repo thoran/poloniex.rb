@@ -1,10 +1,10 @@
 ---
 http_interactions:
 - request:
-    method: put
-    uri: https://api.poloniex.com/orders/blue
+    method: delete
+    uri: https://api.poloniex.com/orders?signTimestamp=1753012228632
     body:
-      encoding: UTF-8
+      encoding: US-ASCII
       string: ''
     headers:
       Accept-Encoding:
@@ -13,25 +13,29 @@ http_interactions:
       - "*/*"
       User-Agent:
       - Ruby
+      Content-Type:
+      - application/json
       Key:
       - "<API_KEY>"
       Signature:
-      - Uu6EbpjXCEpNkqxOirWeJrAkb/wDcUO6fApea3YDUO4=
+      - mnb8b1X9m3EJvTy7iP6oBXfN8L0//R9djaowM12LF50=
       Signtimestamp:
-      - '1754723578959'
+      - '1753012228632'
   response:
     status:
       code: 200
       message: OK
     headers:
       Date:
-      - Sat, 09 Aug 2025 07:12:59 GMT
+      - Sun, 20 Jul 2025 11:50:29 GMT
+      Content-Type:
+      - application/json
       Content-Length:
-      - '0'
+      - '38'
       Connection:
       - keep-alive
-      Cf-Ray:
-      - 96c572c4f8d7e22e-MRS
+      Web-Filter:
+      - unauthenticated
       Cf-Cache-Status:
       - DYNAMIC
       Strict-Transport-Security:
@@ -40,8 +44,10 @@ http_interactions:
       - nosniff
       Server:
       - cloudflare
+      Cf-Ray:
+      - 96223dc23bc8bccf-AMS
     body:
       encoding: UTF-8
-      string: ''
-  recorded_at: Sat, 09 Aug 2025 07:13:00 GMT
+      string: '{"message":"Illegal of ip","code":401}'
+  recorded_at: Sun, 20 Jul 2025 11:50:29 GMT
 recorded_with: VCR 6.3.1

@@ -110,8 +110,11 @@ describe "Poloniex::V1::Client Trading Endpoints" do
   describe "#cancel_all_orders" do
     it "" do
       VCR.use_cassette('v1/cancel_all_orders') do
-        response = subject.cancel_all_orders
-        _(response).must_be_kind_of(Hash)
+        response = subject.cancel_all_orders(
+          symbols: %w{BTC_USDT ETH_USDT},
+          account_types: %w{SPOT}
+        )
+        _(response).must_be_kind_of(Array)
       end
     end
   end

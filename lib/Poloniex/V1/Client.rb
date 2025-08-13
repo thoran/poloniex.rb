@@ -8,16 +8,18 @@ require 'json'
 require 'logger'
 require 'openssl'
 
-require_relative '../Client'
 require_relative '../Configuration'
 require_relative '../Error'
-require_relative '../V1'
 require_relative '../../Hash/x_www_form_urlencode'
 require_relative '../../Object/inQ'
 
 module Poloniex
   module V1
     class Client
+
+      ALLOWABLE_VERBS = %w{GET POST PUT DELETE}
+      API_HOST = 'api.poloniex.com'
+
       class << self
         def path_prefix
           ''
@@ -545,8 +547,8 @@ module Poloniex
 
       def do_request(verb:, path:, args: {})
         verb = verb.to_s.upcase
-        raise ArgumentError, "Unsupported HTTP method: #{verb}" unless verb.in?(Poloniex::Client::ALLOWABLE_VERBS)
-        request_string = request_string(verb: , path:)
+        raise ArgumentError, "Unsupported HTTP method: #{verb}" unless verb.in?(Poloniex::V1::Client::ALLOWABLE_VERBS)
+        request_string = request_string(path:)
         args = args(verb: verb, path: path, supplied_args: args)
         headers = headers(verb: verb, path: path, args: args)
         log_request(verb: verb, request_string: request_string, args: args, headers: headers) if use_logging?
@@ -561,8 +563,8 @@ module Poloniex
         response
       end
 
-      def request_string(verb:, path:)
-        "https://#{Poloniex::Client::API_HOST}#{self.class.path_prefix}#{path}"
+      def request_string(path:)
+        "https://#{Poloniex::V1::Client::API_HOST}#{self.class.path_prefix}#{path}"
       end
 
       def args(verb:, path:, supplied_args:)

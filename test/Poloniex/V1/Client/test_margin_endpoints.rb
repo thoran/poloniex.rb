@@ -33,7 +33,7 @@ describe "Poloniex::V1::Client Margin Endpoints" do
     end
 
     it "fetches margin positions for specific currency" do
-      VCR.use_cassette('v1/magin_borrow_status_btc') do
+      VCR.use_cassette('v1/margin_borrow_status_btc') do
         response = subject.borrow_status(currency: 'BTC')
         _(response).must_be_kind_of(Array)
       end

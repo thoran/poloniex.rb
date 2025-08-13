@@ -67,7 +67,7 @@ http_interactions:
           }, {
             "currencyId" : "214",
             "currency" : "USDT",
-            "available" : "6536.3984176404979468",
+            "available" : "65.3639841764049794",
             "hold" : "0.00"
           }, {
             "currencyId" : "240",

@@ -5,7 +5,7 @@ require 'logger'
 describe "Poloniex::Configuration" do
   describe ".configure" do
     subject do
-      Poloniex::Client.new
+      Poloniex::V1::Client.new
     end
 
     before do
@@ -27,7 +27,7 @@ describe "Poloniex::Configuration" do
 
   describe "using a configuration object" do
     subject do
-      Poloniex::Client.new(configuration: configuration)
+      Poloniex::V1::Client.new(configuration: configuration)
     end
 
     let(:configuration) do
@@ -49,7 +49,7 @@ describe "Poloniex::Configuration" do
 
   describe "overriding configuration" do
     subject do
-      Poloniex::Client.new(
+      Poloniex::V1::Client.new(
         api_key: 'test_api_key',
         api_secret: 'test_api_secret',
         debug: true,

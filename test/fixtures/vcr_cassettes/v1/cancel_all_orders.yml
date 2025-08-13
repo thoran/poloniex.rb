@@ -2,7 +2,7 @@
 http_interactions:
 - request:
     method: delete
-    uri: https://api.poloniex.com/orders?signTimestamp=1753012228632
+    uri: https://api.poloniex.com/orders?accountTypes=%5B%22SPOT%22%5D&signTimestamp=1755078561042&symbols=%5B%22BTC_USDT%22,%20%22ETH_USDT%22%5D
     body:
       encoding: US-ASCII
       string: ''
@@ -48,6 +48,20 @@ http_interactions:
       - 96223dc23bc8bccf-AMS
     body:
       encoding: UTF-8
-      string: '{"message":"Illegal of ip","code":401}'
+      string: |-
+        [{
+          "orderId": "111222333444",
+          "clientOrderId": "666666",
+          "state": "PENDING_CANCEL",
+          "code": 200,
+          "message": "SUCCESS"
+        },
+        {
+          "orderId": "333444555666",
+          "clientOrderId": "777777",
+          "state": "PENDING_CANCEL",
+          "code": 200,
+          "message": "SUCCESS"
+        }]
   recorded_at: Sun, 20 Jul 2025 11:50:29 GMT
 recorded_with: VCR 6.3.1

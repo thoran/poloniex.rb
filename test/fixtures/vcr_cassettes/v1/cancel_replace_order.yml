@@ -1,0 +1,47 @@
+---
+http_interactions:
+- request:
+    method: put
+    uri: https://api.poloniex.com/orders/blue
+    body:
+      encoding: UTF-8
+      string: ''
+    headers:
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+      User-Agent:
+      - Ruby
+      Key:
+      - "<API_KEY>"
+      Signature:
+      - Uu6EbpjXCEpNkqxOirWeJrAkb/wDcUO6fApea3YDUO4=
+      Signtimestamp:
+      - '1754723578959'
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Date:
+      - Sat, 09 Aug 2025 07:12:59 GMT
+      Content-Length:
+      - '0'
+      Connection:
+      - keep-alive
+      Cf-Ray:
+      - 96c572c4f8d7e22e-MRS
+      Cf-Cache-Status:
+      - DYNAMIC
+      Strict-Transport-Security:
+      - max-age=15552000; includeSubDomains
+      X-Content-Type-Options:
+      - nosniff
+      Server:
+      - cloudflare
+    body:
+      encoding: UTF-8
+      string: ''
+  recorded_at: Sat, 09 Aug 2025 07:13:00 GMT
+recorded_with: VCR 6.3.1

@@ -1,11 +1,11 @@
 ---
 http_interactions:
 - request:
-    method: get
-    uri: https://api.poloniex.com/markets/BTCUSDT/markPriceComponents
+    method: post
+    uri: https://api.poloniex.com/wallets/withdraw
     body:
-      encoding: US-ASCII
-      string: ''
+      encoding: UTF-8
+      string: '{"currency":"BTC","amount":"0.1","address":"1A1zP1eP5QGefi2DMPTfTL5SLmv7DivfNa"}'
     headers:
       Accept-Encoding:
       - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
@@ -13,21 +13,31 @@ http_interactions:
       - "*/*"
       User-Agent:
       - Ruby
+      Content-Type:
+      - application/json; charset=UTF-8
+      Key:
+      - "<API_KEY>"
+      Signature:
+      - G9hfsWFR1AAtEz5yJ/RM2yOKn1CZ39aS0nzw6E7Utr0=
+      Signtimestamp:
+      - '1754739490163'
   response:
     status:
-      code: 500
-      message: Internal Server Error
+      code: 200
+      message: OK
     headers:
       Date:
-      - Wed, 25 Jun 2025 08:50:21 GMT
+      - Sat, 09 Aug 2025 11:38:11 GMT
       Content-Type:
       - application/json
       Content-Length:
-      - '48'
+      - '87'
       Connection:
       - keep-alive
+      Cf-Ray:
+      - 96c6f736e996e7e8-SYD
       Web-Filter:
-      - skip-authentication
+      - authenticated
       Cf-Cache-Status:
       - DYNAMIC
       Strict-Transport-Security:
@@ -36,14 +46,11 @@ http_interactions:
       - nosniff
       Server:
       - cloudflare
-      Cf-Ray:
-      - 955337831bee3a89-MXP
     body:
       encoding: UTF-8
       string: |-
         {
-          "code" : 500,
-          "message" : "System error"
+            "withdrawalRequestsId": 33485231
         }
-  recorded_at: Wed, 25 Jun 2025 08:50:21 GMT
+  recorded_at: Sat, 09 Aug 2025 11:38:11 GMT
 recorded_with: VCR 6.3.1

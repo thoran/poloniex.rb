@@ -1,8 +1,8 @@
 ---
 http_interactions:
 - request:
-    method: get
-    uri: https://api.poloniex.com/markets/BTC_USDT/markPrice?signTimestamp=1752851433000
+    method: delete
+    uri: https://api.poloniex.com/orders/32487004629499904?id=32487004629499904&signTimestamp=1754743138269
     body:
       encoding: US-ASCII
       string: ''
@@ -17,29 +17,25 @@ http_interactions:
       - application/json
       Key:
       - "<API_KEY>"
-      Signaturemethod:
-      - HmacSHA256
       Signature:
-      - ub/Euvgo7a4GxklxY3RrekwQyo/Dk51vh7gPx2aIfNs=
-      Signatureversion:
-      - '2'
+      - GsOORlWkbgsjmRkW8UG7tP+5LyDgcXf/R7XnOxWFcZk=
       Signtimestamp:
-      - '1752851433000'
+      - '1753012219042'
   response:
     status:
       code: 200
       message: OK
     headers:
       Date:
-      - Fri, 18 Jul 2025 15:10:34 GMT
+      - Sun, 20 Jul 2025 11:50:20 GMT
       Content-Type:
       - application/json
-      Transfer-Encoding:
-      - chunked
+      Content-Length:
+      - '38'
       Connection:
       - keep-alive
       Web-Filter:
-      - skip-authentication
+      - unauthenticated
       Cf-Cache-Status:
       - DYNAMIC
       Strict-Transport-Security:
@@ -49,9 +45,16 @@ http_interactions:
       Server:
       - cloudflare
       Cf-Ray:
-      - 9612e8162f0cdcc8-FRA
+      - 96223d884e460b66-AMS
     body:
-      encoding: ASCII-8BIT
-      string: '{"symbol":"BTC_USDT","markPrice":"118056.01","time":1752851433287}'
-  recorded_at: Fri, 18 Jul 2025 15:10:34 GMT
+      encoding: UTF-8
+      string: |-
+        {
+          "orderId": "32487004629499904",
+          "clientOrderId": "54321",
+          "state": "PENDING_CANCEL",
+          "code": 200,
+          "message": ""
+        }
+  recorded_at: Sun, 20 Jul 2025 11:50:20 GMT
 recorded_with: VCR 6.3.1

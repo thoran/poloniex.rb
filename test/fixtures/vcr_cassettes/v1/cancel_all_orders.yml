@@ -1,0 +1,67 @@
+---
+http_interactions:
+- request:
+    method: delete
+    uri: https://api.poloniex.com/orders?accountTypes=%5B%22SPOT%22%5D&signTimestamp=1755078561042&symbols=%5B%22BTC_USDT%22,%20%22ETH_USDT%22%5D
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+      User-Agent:
+      - Ruby
+      Content-Type:
+      - application/json
+      Key:
+      - "<API_KEY>"
+      Signature:
+      - mnb8b1X9m3EJvTy7iP6oBXfN8L0//R9djaowM12LF50=
+      Signtimestamp:
+      - '1753012228632'
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Date:
+      - Sun, 20 Jul 2025 11:50:29 GMT
+      Content-Type:
+      - application/json
+      Content-Length:
+      - '38'
+      Connection:
+      - keep-alive
+      Web-Filter:
+      - unauthenticated
+      Cf-Cache-Status:
+      - DYNAMIC
+      Strict-Transport-Security:
+      - max-age=15552000; includeSubDomains
+      X-Content-Type-Options:
+      - nosniff
+      Server:
+      - cloudflare
+      Cf-Ray:
+      - 96223dc23bc8bccf-AMS
+    body:
+      encoding: UTF-8
+      string: |-
+        [{
+          "orderId": "111222333444",
+          "clientOrderId": "666666",
+          "state": "PENDING_CANCEL",
+          "code": 200,
+          "message": "SUCCESS"
+        },
+        {
+          "orderId": "333444555666",
+          "clientOrderId": "777777",
+          "state": "PENDING_CANCEL",
+          "code": 200,
+          "message": "SUCCESS"
+        }]
+  recorded_at: Sun, 20 Jul 2025 11:50:29 GMT
+recorded_with: VCR 6.3.1

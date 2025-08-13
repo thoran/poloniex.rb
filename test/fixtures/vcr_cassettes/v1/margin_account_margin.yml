@@ -2,7 +2,7 @@
 http_interactions:
 - request:
     method: get
-    uri: https://api.poloniex.com/markets/BTC_USDT/markPrice
+    uri: https://api.poloniex.com/margin/accountMargin?accountType=SPOT&signTimestamp=1753001905095
     body:
       encoding: US-ASCII
       string: ''
@@ -17,21 +17,17 @@ http_interactions:
       - application/json
       Key:
       - "<API_KEY>"
-      Signaturemethod:
-      - HmacSHA256
       Signature:
-      - 4914cf141657ee2af92faf7646bb06070398d362799e5994a48cc8ff388f26ff
-      Signatureversion:
-      - '2'
-      Timestamp:
-      - '1751391149000'
+      - 7dDzi8ukyVlnSnZ+meB8RqHTP3hVQLp/jj+r313Uy4w=
+      Signtimestamp:
+      - '1753001905095'
   response:
     status:
       code: 200
       message: OK
     headers:
       Date:
-      - Tue, 01 Jul 2025 17:32:30 GMT
+      - Sun, 20 Jul 2025 08:58:25 GMT
       Content-Type:
       - application/json
       Transfer-Encoding:
@@ -39,7 +35,7 @@ http_interactions:
       Connection:
       - keep-alive
       Web-Filter:
-      - skip-authentication
+      - authenticated
       Cf-Cache-Status:
       - DYNAMIC
       Strict-Transport-Security:
@@ -49,14 +45,18 @@ http_interactions:
       Server:
       - cloudflare
       Cf-Ray:
-      - 9587a4a20cad566a-FRA
+      - 962141b44a77e7c6-SYD
     body:
       encoding: ASCII-8BIT
       string: |-
         {
-          "symbol" : "BTC_USDT",
-          "markPrice" : "106189.26",
-          "time" : "1751391150064"
+          "totalAccountValue" : "7759.864159854274816739",
+          "totalMargin" : "6538.792786698463435804",
+          "usedMargin" : "0",
+          "freeMargin" : "6538.792786698463435804",
+          "maintenanceMargin" : "0",
+          "marginRatio" : "999",
+          "time" : 1753001905420
         }
-  recorded_at: Tue, 01 Jul 2025 17:32:30 GMT
+  recorded_at: Sun, 20 Jul 2025 08:58:25 GMT
 recorded_with: VCR 6.3.1

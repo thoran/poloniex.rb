@@ -1,0 +1,195 @@
+---
+http_interactions:
+- request:
+    method: get
+    uri: https://api.poloniex.com/accounts/balances?signTimestamp=1753098270134
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+      User-Agent:
+      - Ruby
+      Content-Type:
+      - application/json
+      Key:
+      - "<API_KEY>"
+      Signature:
+      - yPuDDnl75v5RsWxwA8Pb/gAKt4kkndztQyorz5Zfhfg=
+      Signtimestamp:
+      - '1753098270134'
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Date:
+      - Mon, 21 Jul 2025 11:44:30 GMT
+      Content-Type:
+      - application/json
+      Content-Length:
+      - '3137'
+      Connection:
+      - keep-alive
+      Web-Filter:
+      - authenticated
+      Vary:
+      - accept-encoding
+      Cf-Cache-Status:
+      - DYNAMIC
+      Strict-Transport-Security:
+      - max-age=15552000; includeSubDomains
+      X-Content-Type-Options:
+      - nosniff
+      Server:
+      - cloudflare
+      Cf-Ray:
+      - 962a725d19561538-SYD
+    body:
+      encoding: ASCII-8BIT
+      string: |-
+        [ {
+          "accountId" : "76103222774956032",
+          "accountType" : "SPOT",
+          "balances" : [ {
+            "currencyId" : "28",
+            "currency" : "BTC",
+            "available" : "0.00001373309589009",
+            "hold" : "0.00"
+          }, {
+            "currencyId" : "125",
+            "currency" : "LTC",
+            "available" : "0.00000084",
+            "hold" : "0.00"
+          }, {
+            "currencyId" : "214",
+            "currency" : "USDT",
+            "available" : "65.3639841764049794",
+            "hold" : "0.00"
+          }, {
+            "currencyId" : "240",
+            "currency" : "XMR",
+            "available" : "0.000000897837260269",
+            "hold" : "0.00"
+          }, {
+            "currencyId" : "267",
+            "currency" : "ETH",
+            "available" : "0.000000001",
+            "hold" : "0.00"
+          }, {
+            "currencyId" : "292",
+            "currency" : "BCH",
+            "available" : "0.00046332031917782",
+            "hold" : "0.00"
+          }, {
+            "currencyId" : "309",
+            "currency" : "BCHSV",
+            "available" : "0.00034250817945186",
+            "hold" : "0.00"
+          }, {
+            "currencyId" : "315",
+            "currency" : "TRX",
+            "available" : "0.000000000270939933",
+            "hold" : "0.00"
+          }, {
+            "currencyId" : "343",
+            "currency" : "BNB",
+            "available" : "0.0003873529717808",
+            "hold" : "0.00"
+          }, {
+            "currencyId" : "345",
+            "currency" : "JST",
+            "available" : "0.0005546",
+            "hold" : "0.00"
+          }, {
+            "currencyId" : "452",
+            "currency" : "INJ",
+            "available" : "0.00006338",
+            "hold" : "0.00"
+          }, {
+            "currencyId" : "457",
+            "currency" : "GLM",
+            "available" : "1870.50244546",
+            "hold" : "0.00"
+          }, {
+            "currencyId" : "509",
+            "currency" : "SHIB",
+            "available" : "0.0175",
+            "hold" : "0.00"
+          }, {
+            "currencyId" : "526",
+            "currency" : "NFT",
+            "available" : "0.675392771026943985",
+            "hold" : "0.00"
+          }, {
+            "currencyId" : "541",
+            "currency" : "XEC",
+            "available" : "2.28338786301181461",
+            "hold" : "0.00"
+          }, {
+            "currencyId" : "586",
+            "currency" : "SOL",
+            "available" : "0.002695892493698352",
+            "hold" : "0.00"
+          }, {
+            "currencyId" : "598",
+            "currency" : "FLOKI",
+            "available" : "0.4416",
+            "hold" : "0.00"
+          }, {
+            "currencyId" : "612",
+            "currency" : "SUPER",
+            "available" : "0.00009328",
+            "hold" : "0.00"
+          }, {
+            "currencyId" : "630",
+            "currency" : "IMX",
+            "available" : "10.00008051",
+            "hold" : "0.00"
+          }, {
+            "currencyId" : "793",
+            "currency" : "OP",
+            "available" : "210.00007873",
+            "hold" : "0.00"
+          }, {
+            "currencyId" : "836",
+            "currency" : "ICP",
+            "available" : "169.1997014005",
+            "hold" : "0.00"
+          }, {
+            "currencyId" : "887",
+            "currency" : "PEPE",
+            "available" : "0.6268",
+            "hold" : "0.00"
+          }, {
+            "currencyId" : "1159",
+            "currency" : "HTX",
+            "available" : "5.980953804645784397",
+            "hold" : "0.00"
+          }, {
+            "currencyId" : "1240",
+            "currency" : "JUP",
+            "available" : "0.49587874",
+            "hold" : "0.00"
+          }, {
+            "currencyId" : "1667",
+            "currency" : "ZRO",
+            "available" : "0.00",
+            "hold" : "0.00"
+          }, {
+            "currencyId" : "1695",
+            "currency" : "BLAST",
+            "available" : "0.00",
+            "hold" : "0.00"
+          }, {
+            "currencyId" : "1888",
+            "currency" : "GOAT",
+            "available" : "0.00000074",
+            "hold" : "0.00"
+          } ]
+        } ]
+  recorded_at: Mon, 21 Jul 2025 11:44:30 GMT
+recorded_with: VCR 6.3.1

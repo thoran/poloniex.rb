@@ -1,11 +1,11 @@
 ---
 http_interactions:
 - request:
-    method: get
-    uri: https://api.poloniex.com/markets/BTC_USDT/markPrice?signTimestamp=1752851433000
+    method: post
+    uri: https://api.poloniex.com/orders/killSwitch
     body:
-      encoding: US-ASCII
-      string: ''
+      encoding: UTF-8
+      string: '{"timeout":"10"}'
     headers:
       Accept-Encoding:
       - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
@@ -14,24 +14,20 @@ http_interactions:
       User-Agent:
       - Ruby
       Content-Type:
-      - application/json
+      - application/json; charset=UTF-8
       Key:
       - "<API_KEY>"
-      Signaturemethod:
-      - HmacSHA256
       Signature:
-      - ub/Euvgo7a4GxklxY3RrekwQyo/Dk51vh7gPx2aIfNs=
-      Signatureversion:
-      - '2'
+      - NY6i/UTu81pwymsKRD3W8rZJaR6BYUAjAztMCQkOZOo=
       Signtimestamp:
-      - '1752851433000'
+      - '1754743762946'
   response:
     status:
       code: 200
       message: OK
     headers:
       Date:
-      - Fri, 18 Jul 2025 15:10:34 GMT
+      - Sat, 09 Aug 2025 12:49:23 GMT
       Content-Type:
       - application/json
       Transfer-Encoding:
@@ -39,7 +35,7 @@ http_interactions:
       Connection:
       - keep-alive
       Web-Filter:
-      - skip-authentication
+      - authenticated
       Cf-Cache-Status:
       - DYNAMIC
       Strict-Transport-Security:
@@ -49,9 +45,9 @@ http_interactions:
       Server:
       - cloudflare
       Cf-Ray:
-      - 9612e8162f0cdcc8-FRA
+      - 96c75f8799f6aacb-SYD
     body:
       encoding: ASCII-8BIT
-      string: '{"symbol":"BTC_USDT","markPrice":"118056.01","time":1752851433287}'
-  recorded_at: Fri, 18 Jul 2025 15:10:34 GMT
+      string: '{"startTime":"1754743763199","cancellationTime":"1754743773199"}'
+  recorded_at: Sat, 09 Aug 2025 12:49:23 GMT
 recorded_with: VCR 6.3.1

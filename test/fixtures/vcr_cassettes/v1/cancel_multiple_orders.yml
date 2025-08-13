@@ -1,0 +1,63 @@
+---
+http_interactions:
+- request:
+    method: delete
+    uri: https://api.poloniex.com/orders/cancelByIds?signTimestamp=1754743247152
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+      User-Agent:
+      - Ruby
+      Key:
+      - "<API_KEY>"
+      Signature:
+      - Ra9hI3s5OoGcckOFwd+BnrL0Q/T1DcuZ2In7vxn7+bY=
+      Signtimestamp:
+      - '1754743247152'
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Date:
+      - Sat, 09 Aug 2025 12:40:47 GMT
+      Content-Length:
+      - '0'
+      Connection:
+      - keep-alive
+      Cf-Ray:
+      - 96c752efe99de7d1-SYD
+      Cf-Cache-Status:
+      - DYNAMIC
+      Strict-Transport-Security:
+      - max-age=15552000; includeSubDomains
+      X-Content-Type-Options:
+      - nosniff
+      Server:
+      - cloudflare
+    body:
+      encoding: UTF-8
+      string: |-
+        [
+          {
+            "orderId": "12345",
+            "clientOrderId": "33344",
+            "state": "PENDING_CANCEL",
+            "code": 200,
+            "message":""
+          },
+          {
+            "orderId": "67890",
+            "clientOrderId": "myId-1",
+            "state": "PENDING_CANCEL",
+            "code": 200,
+            "message":""
+          }
+        ]
+  recorded_at: Sat, 09 Aug 2025 12:40:47 GMT
+recorded_with: VCR 6.3.1

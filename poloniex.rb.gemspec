@@ -4,7 +4,7 @@ Gem::Specification.new do |spec|
   spec.name = 'poloniex.rb'
 
   spec.version = Poloniex::VERSION
-  spec.date = '2025-08-13'
+  spec.date = '2025-08-15'
 
   spec.summary = "Access the Poloniex API with Ruby."
   spec.description = "Access the Poloniex API with Ruby."

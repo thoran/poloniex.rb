@@ -5,6 +5,5 @@ $LOAD_PATH.unshift(lib_dir) unless $LOAD_PATH.include?(lib_dir)
 
 module Poloniex; end
 
-require 'Poloniex/Configuration'
-require 'Poloniex/V1'
+require 'Poloniex/Client'
 require 'Poloniex/VERSION'

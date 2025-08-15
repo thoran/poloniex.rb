@@ -7,15 +7,14 @@ require 'webmock'
 require_relative '../lib/poloniex'
 
 VCR.configure do |config|
-  config.cassette_library_dir = 'test/fixtures/vcr_cassettes'
-
+  config.cassette_library_dir = File.join(__dir__, 'fixtures', 'vcr_cassettes')
   config.hook_into :webmock
 
   config.filter_sensitive_data('<API_KEY>'){ENV['POLONIEX_API_KEY']}
   config.filter_sensitive_data('<API_SECRET>'){ENV['POLONIEX_API_SECRET'] }
 
-  # Allow localhost connections for debugging
-  config.ignore_localhost = true
+  config.ignore_localhost = true # Allow localhost connections for debugging.
+  # config.debug_logger = $stderr # Uncomment for debug output from VCR.
 
   config.default_cassette_options = {
     record: :new_episodes,

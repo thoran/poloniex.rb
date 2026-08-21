@@ -20,6 +20,7 @@ Gem::Specification.new do |spec|
   spec.files = [
     'poloniex.rb.gemspec',
     'Gemfile',
+    'LICENSE',
     Dir['lib/**/*.rb'],
     'README.md',
     Dir['test/**/*.rb']

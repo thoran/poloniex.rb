@@ -1,4 +1,10 @@
-# Changelog
+# poloniex.rb/CHANGELOG
+
+## [0.1.3] - 2026-09-13
+
+1. ~ test/Poloniex/Configuration_test.rb: Use File::NULL for the logger tests.
+2. - test_log_file, committed by accident at 0.1.0
+3. ~ Poloniex::VERSION: /0.1.2/0.1.3/
 
 ## [0.1.2] - 2026-08-21
 - + LICENSE: the MIT text, copyright 2025-2026 thoran. The gemspec has declared MIT while the repository carried no licence text at all.

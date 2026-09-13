@@ -13,7 +13,7 @@ describe "Poloniex::Configuration" do
         config.api_key = 'test_api_key'
         config.api_secret = 'test_api_secret'
         config.debug = false
-        config.logger = Logger.new('test_log_file')
+        config.logger = Logger.new(File::NULL)
       end
     end
 
@@ -35,7 +35,7 @@ describe "Poloniex::Configuration" do
         api_key: 'test_api_key',
         api_secret: 'test_api_secret',
         debug: false,
-        logger: Logger.new('test_log_file')
+        logger: Logger.new(File::NULL)
       )
     end
 
@@ -53,7 +53,7 @@ describe "Poloniex::Configuration" do
         api_key: 'test_api_key',
         api_secret: 'test_api_secret',
         debug: true,
-        logger: Logger.new('test_log_file')
+        logger: Logger.new(File::NULL)
       )
     end
 
